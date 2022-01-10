@@ -1,0 +1,25 @@
+To start the EKS learning you need to setup below
+
+AWS account 
+Create a User -> raju@abc.com
+Create Role -> AWSServiceRoleForAmazonEKS
+SSH Key pair -> eks-raj
+
+Install following in your PC
+	
+	awscli
+		https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+	eksctl
+		https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html
+	kubectl
+		https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux
+		
+Test that your installation was successful with the following command.
+	aws --version
+	eksctl version
+	kubectl version --short --client			
+
+
+Setup your PC with your aws account
+	aws configure
+	aws sts get-caller-identity # to know who is currently login
