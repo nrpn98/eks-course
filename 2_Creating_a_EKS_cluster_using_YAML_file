@@ -1,0 +1,9 @@
+Creating a EKS cluster using YAML file,
+---------------------------------------------
+NOTE THAT eksctl will create a VPC and two subnets AUTOMATICALLY, However we can mention existing VPC for that please refer the eksctl documatation.
+	
+	#Creating a EKS cluster using YAML file
+	eksctl create cluster -f eks-raju-cluster.yml
+
+	#To list all node that has been created with cluster creation 
+	kubectl get nodes 	
