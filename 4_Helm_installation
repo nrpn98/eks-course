@@ -1,0 +1,18 @@
+Helm installation
+------------------
+Installing Helm  #https://helm.sh/docs/intro/install/
+	$ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+Adding a repo
+	$ helm repo add stable https //kubernetes-charts.storage.googleapis.com
+List the added repo
+	$ helm repo list
+Fetch the latest state of the repo
+	$ helm repo update
+To know what is inside the repo
+	$ helm search repo 
+Install a chat
+	$ helm install redis-test stable/redis 
+	$ kubectl get pod
+	$ helm ls
+To Uninstall 
+	$ helm unistall redis-test

@@ -1,1 +1,0 @@
-aws-auth-configmap -> 6.1

@@ -1,0 +1,9 @@
+ControlPlan logging to Cloudwatch	
+---------------------------------
+ControlPlan is fully managed by AWS therefore to check the ControlPlan we need to enable it, for that we need to adde the following part in the ymal file
+	cloudWatch:
+	  clusterLogging:
+	    enableTypes:  ["api", "audit", "authenticatator"] /["*"]
+	    
+	eksctl utils update-cluster-logging --config-file 4/eks-raju-cluster-cloudWatch.yml --approve
+	eksctl utils update-cluster-logging --name=EKS-raju-cluster --disable-types all

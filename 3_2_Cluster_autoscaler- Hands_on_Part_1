@@ -1,0 +1,18 @@
+Cluster autoscaler - Hands on Part 1
+------------------------------------
+a) Create dedicated nodegroups with autoscaling enabled
+	2 nodegroups with single AZ(eg for stateful workloads)
+	1 nodegroup across 3 AZs using spot instances (eg for stateless workloads)
+	
+	eksclt create nodegroup --config-file=4/eks-cluster-autoscaler.yaml    
+	
+b) Deploy the autoscaler
+	1.create deployment
+		kubectl apply -f https://raw.githubusercontent.com/kubernetes/autoscaler/master/cluster-autoscaler/cloudprovider/aws/examples/cluster-autoscaler-autodiscover.yaml
+	2. add annotation to the deployment to prevent from being evicted
+		kubectl -n kube-system annotate deployment.apps/cluster-autoscaler cluster-autoscaler.kubernetes.io/safe-to-evict="false"
+	3. set maching image version and cluster name in deployment
+		get the autoscaler image version:  
+		open https://github.com/kubernetes/autoscaler/releases and get the latest release version matching your Kubernetes version, e.g. Kubernetes 1.14 => check for 1.14.n where "n" is the latest release version
+		kubectl -n kube-system edit deployment.apps/cluster-autoscaler
+			#Look for the image and edit the image accordingly

@@ -1,0 +1,13 @@
+Nodegroups and Sport Instances
+----------------------------------
+Get the cluster name -> eksctl get cluster
+Get the nodegroup info -> eksctl get nodegroup --cluster eks-raju-cluster
+
+	#Scaling a nodegroup
+		eksctl scale nodegroup --cluster=eks-raju-cluster --nodes=3 --name=ng-1
+	#Adding a nodegroup along with ondemand and spot instances
+		eksctl created nodegroup --config-file=4/eks-raju-cluster-adding-new-ng.yml --include=ng-mixed
+		eksctl get nodegroup --cluster eks-raju-cluster
+	#Deletign a node group
+		eksctl delete nodegroup --config-file=4/eks-raju-cluster-adding-new-ng.yml --include=ng-mixed --approve
+	

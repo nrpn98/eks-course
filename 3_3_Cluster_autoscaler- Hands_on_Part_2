@@ -1,0 +1,12 @@
+Cluster autoscaler - Hands on Part 2
+-------------------------------------
+c) Create nginx deployment and scale it in/out
+	kubectl apply -f 4/nginx-deployment.yaml
+	kubectl get pod
+	kubectl scale --replica=3 deployment/test-autoscaler	#this will increase the number of pod
+	kubectl scale --replica=6 deployment/test-autoscaler	#this will create another 3 pods but initcally all three/two will be under pending state, because the spot instance that we requested was t3.small (2Gb ram and the nginx pod will required 512Mi, this means our autoscaler will launch another t3.small spot instance to cater the request)
+	#if we reduce the replica count to 2 then after cooldown period(default is 5 mins) the newly created instance will terminated.
+	
+To list the deployment log
+	kubectl -n namespace logs deployment deployment_name
+	kubectl -n kube-system logs deployment.apps/cluster-autoscaler | grep -A5 "Expanding Node Group"
